@@ -1,0 +1,56 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("tips")
+print("First five rows of the dataset:")
+print(df.head())
+
+plt.figure(figsize=(7, 5))
+sns.histplot(data=df, x="total_bill", kde=True)
+plt.title("Distribution of Total Bill")
+plt.xlabel("Total Bill")
+plt.ylabel("Frequency")
+plt.show()
+
+sns.jointplot(data=df, x="total_bill", y="tip", kind="scatter")
+plt.show()
+
+plt.figure(figsize=(6, 5))
+sns.countplot(data=df, x="sex")
+plt.title("Count of Customers by Sex")
+plt.xlabel("Sex")
+plt.ylabel("Count")
+plt.show()
+
+plt.figure(figsize=(7, 5))
+sns.barplot(data=df, x="day", y="total_bill")
+plt.title("Average Total Bill by Day")
+plt.xlabel("Day")
+plt.ylabel("Average Total Bill")
+plt.show()
+
+plt.figure(figsize=(7, 5))
+sns.boxplot(data=df, x="day", y="total_bill")
+plt.title("Total Bill Distribution by Day")
+plt.xlabel("Day")
+plt.ylabel("Total Bill")
+plt.show()
+
+plt.figure(figsize=(7, 5))
+sns.violinplot(data=df, x="time", y="tip")
+plt.title("Tip Distribution by Time")
+plt.xlabel("Time")
+plt.ylabel("Tip")
+plt.show()
+
+plt.figure(figsize=(7, 5))
+sns.regplot(data=df, x="total_bill", y="tip")
+plt.title("Regression Plot: Total Bill vs Tip")
+plt.xlabel("Total Bill")
+plt.ylabel("Tip")
+plt.show()
+
+print("\nObservations:")
+print("1.Histogram: Most of the bills are on the lower side, while only a few customers have very high bills.")
+print("2. Count Plot: There are more male customers than female customers in the dataset.")
+print("3.Regression Plot: People generally tend to give higher tips when their total bill is higher.")
